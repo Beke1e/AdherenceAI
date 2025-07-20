@@ -1,0 +1,50 @@
+Local Deployment Instructions for Adherence Flask App
+=====================================================
+
+1. Prerequisites:
+   - Python 3.7 or higher installed on your system.
+   - Git (optional, if you want to clone the repository).
+
+2. Setup Steps:
+
+   a. Clone or download the project files to your local machine.
+
+   b. Open a terminal or command prompt and navigate to the project directory.
+
+   c. (Optional but recommended) Create a virtual environment to isolate dependencies:
+      - On Windows:
+        python -m venv venv
+        venv\Scripts\activate
+      - On macOS/Linux:
+        python3 -m venv venv
+        source venv/bin/activate
+
+   d. Install the required Python packages:
+      pip install -r requirements.txt
+
+3. Database:
+   - The application uses SQLite database file named 'adherence_data.db'.
+   - If the file does not exist, it will be created automatically when you run the app.
+   - If you have an existing 'adherence_data.db' file, place it in the project root directory.
+
+4. Running the Application:
+   - Run the Flask app using the command:
+     python app.py
+   - The app will start on host 0.0.0.0 and port 5000.
+
+5. Accessing the Application:
+   - Open your web browser and go to:
+     http://localhost:5000
+   - You will be redirected to the login page.
+
+6. Notes:
+   - The app supports user registration and login.
+   - Prediction data and user accounts are stored in the SQLite database.
+   - To stop the app, press Ctrl+C in the terminal.
+
+7. Troubleshooting:
+   - Ensure Python and pip are correctly installed and added to your system PATH.
+   - If you encounter permission issues, try running the terminal as administrator.
+   - For any database errors, verify the presence and permissions of 'adherence_data.db'.
+
+Enjoy using the Adherence Flask App locally!

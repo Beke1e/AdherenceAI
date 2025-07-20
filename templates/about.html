@@ -1,0 +1,36 @@
+{% extends "common.html" %}
+
+{% block title %}About - Medication Adherence Prediction App{% endblock %}
+
+{% block content %}
+  <div class="info-container">
+    <!-- About Section -->
+    <section id="about" class="info-section">
+      <div class="section-header">
+        <i class="fas fa-info-circle section-icon ai-icon"></i>
+        <h2 class="ai-topic"><strong>About the App</strong></h2>
+      </div>
+      <div class="section-content">
+        <p>
+          📱 <strong>Medication Adherence Prediction</strong> is essential for managing chronic conditions like <strong>Type 2 Diabetes</strong>.
+          This AI-powered app predicts and monitors medication adherence levels in 🇪🇹 Ethiopian patients for better management.
+        </p>
+        <p>Article: <a href="https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2025.1486350/full" target="_blank">Read the article here</a></p>
+
+        <h3>🧠 <strong>Model Training</strong></h3>
+        <p>
+          📊 Data was collected from 📍 <em>University of Gondar Specialized Hospital</em>.
+          The <strong>General Medication Adherence Scale (GMAS)</strong> was used for assessment.
+          To balance data, <strong>SMOTE</strong> was applied, and after evaluating models, the <strong>SVM model</strong> was deployed.
+        </p>
+
+        <h3>✨ <strong>Key Features</strong></h3>
+        <ul>
+          <li>🔐 <strong>Access:</strong> Sign up | Log in</li>
+          <li>📝 <strong>Input:</strong> Enter demographics & GMAS scores</li>
+          <li>📊 <strong>Tracking:</strong> Real-time adherence status (🔴 Low | 🟢 High)</li>
+        </ul>
+      </div>
+    </section>
+    
+{% endblock %}

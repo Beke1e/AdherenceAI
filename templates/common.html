@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Medication Adherence App{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-papb+X+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q6+6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-pills"></i> Medication Adherence App</h1>
+        <!-- Removed toggle button for right sidebar as per request -->
+        <!-- <button id="toggle-right" class="toggle-btn toggle-right" aria-label="Toggle Right Sidebar"><i class="fas fa-user-cog"></i> Toggle </button> -->
+    </header>
+    <nav>
+        <a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a>
+        <a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Add</a>
+        <a href="{{ url_for('view_data') }}"><i class="fas fa-table"></i> View</a>
+        <a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Logout</a>
+    </nav>
+    <div class="container">
+        <aside id="left-sidebar" class="sidebar left-sidebar">
+            <button id="toggle-left" class="toggle-btn toggle-left" aria-label="Toggle Left Sidebar"><i class="fas fa-bars"></i></button>
+            <h3><i class="fas fa-link"></i> Quick Links</h3>
+            <div class="quick-links">
+                <ul>
+                    <li><a href="{{ url_for('about') }}"><i class="fas fa-info-circle special-icon"></i> About</a></li>
+                    <li><a href="{{ url_for('home') }}"><i class="fas fa-home special-icon"></i> Add</a></li>
+                    <li><a href="{{ url_for('view_data') }}"><i class="fas fa-table special-icon"></i> View</a></li>
+                    <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope special-icon"></i> Contact</a></li>
+                    <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt special-icon"></i> Logout</a></li>
+                </ul>
+            </div>
+        </aside>
+        <main class="content-area">
+            {% block content %}{% endblock %}
+        </main>
+        <aside id="right-sidebar" class="sidebar right-sidebar">
+            <h3>✨ Key Features</h3>
+           <ul class="key-features-list">
+                <p>🔐 Access: Sign up | Log in</p>
+                <p>📝 Input: Enter demographics &amp; GMAS scores</p>
+                <p>📊 Tracking: Real-time adherence status (<span style="color:red;">🔴 Low</span> | <span style="color:green;">🟢 High</span>)</p>
+            </ul>
+               <img src="{{ url_for('static', filename='Diabetes.jpg') }}" alt="Diabetes" class="sidebar-image" />
+          
+        </aside>
+    </div>
+    <footer>
+        &copy; 2025 Medication Adherence Prediction App. All rights reserved.
+    </footer>
+    <script>
+        const toggleLeftBtn = document.getElementById('toggle-left');
+        const leftSidebar = document.getElementById('left-sidebar');
+
+        toggleLeftBtn.addEventListener('click', () => {
+            leftSidebar.classList.toggle('collapsed');
+            toggleLeftBtn.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

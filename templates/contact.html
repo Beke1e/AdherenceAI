@@ -1,0 +1,27 @@
+{% extends "common.html" %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+  <div class="body-content">
+  <div class="right-side">
+    <h2> Powered By </h2>
+    <div class="contact-person">
+    
+      <h3>Bekele Mulat Enyew</h3>
+      <img class="circular-image" src="{{ url_for('static', filename='Bekele.jpg') }}" alt="Bekele Mulat Enyew"/>
+      <p>📍<strong>Address:</strong> Gondar, Ethiopia</p>
+      <p>📞<strong>Phone:</strong> +251-936 328 953</p>
+      <p>📧<strong>Email:</strong> <a href="mailto:bekemuler3@gmail.com">bekemuler3@gmail.com</a></p>
+      <p>🔗<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bekele-enyew-9b44a4108/" target="_blank">Click here</a></p>
+    </div>
+    <div class="contact-person margin-top">
+      <h3>Ewunate Assaye</h3>
+      <img class="circular-image" src="{{ url_for('static', filename='ewunate.jpg') }}" alt="Ewunate Assaye"/>
+      <p>📍 <strong>Address:</strong> Gondar, Ethiopia</p>
+      <p>📞<strong>Phone:</strong> +251-920 287 793</p>
+      <p>📧<strong>Email:</strong> <a href="mailto:assaye738@gmail.com">assaye738@gmail.com</a></p>
+      <p>🔗<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ewunate-assaye-244166122" target="_blank">Click here</a></p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends "common.html" %}
+
+{% block title %}ML Medication Adherence{% endblock %}
+
+{% block content %}
+  <div class="left-side">
+    <!-- Left side content (can be navigation or info) -->
+  </div>
+  <div class="body-content">
+    <h2>Predict the Medication Adherence Level</h2>
+
+    <div class="instructions-section">
+      <h3>
+        Instructions (መመሪያዎች)
+      </h3>
+      <p>For the following metrics based on your experience give weights from 0 to 3 (ለሚከተሉት መለኪያዎች ከራስዎ ልምድ ጋር አያይዘው ከ 0 እስከ 3 ይስጡ)<br>
+        0: Never (በፍጹም)<br>
+        1: Sometimes (አንዳንዴ)<br>
+        2: Often (ብዙ ጊዜ)<br>
+        3: Always (ሁሌም)
+      </p>
+    </div>
+
+    <form action="/predict" method="post">
+      <div class="form-row">
+        <div class="form-column demographic-section">
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+          </div>
+          <div class="form-group">
+            <label for="sex">Gender:</label>
+            <select name="sex" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="container gmas-scores-section">
+        <div class="form-row">
+          <div class="form-column">
+            <div class="form-group">
+              <label for="feature1">Difficulty remembering to take medications (መድሃኒቶችን ለመውሰድ የማስታወስ ችግር):</label>
+              <select name="feature1" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature2">Forgetting medications due to busy schedules, travel, and other events (በተጨናነቀ የጊዜ ሰሌዳ፣ በጉዞ እና በሌሎች ዝግጅቶች ምክንያት መድሃኒቶችን መርሳት):</label>
+              <select name="feature2" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature3">Discontinuing medications when feeling well (የመሻል ስሜት ሲኖር መድሃኒቶችን ማቋረጥ):</label>
+              <select name="feature3" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature4">Stopping taking medications due to adverse effects (በአሉታዊ ተጽእኖዎች ምክንያት መድሃኒቶችን መውሰድ ማቆም):</label>
+              <select name="feature4" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature5">Stop medications without telling a doctor (ለሐኪም ሳይናገሩ መድሃኒቶችን ማቆም):</label>
+              <select name="feature5" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature6">Discontinuing medications due to other medicines for additional diseases (ለተጨማሪ በሽታዎች በሌሎች መድሃኒቶች ምክንያት መድሃኒቶችን ማቆም):</label>
+              <select name="feature6" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-column">
+            <div class="form-group">
+              <label for="feature7">Find it a hassle to remember medications due to regimen complexity (በመድሃኒት አሰራር ውስብስብነት ምክንያት መድሃኒቶችን ለማስታወስ ችግር):</label>
+              <select name="feature7" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature8">Missing medicines due to progression of disease and addition of new medicines in the last month (ባለፈው ወር በበሽታ መሻሻል እና አዳዲስ መድሃኒቶች በመጨመሩ ምክንያት የጠፉ መድሃኒቶች):</label>
+              <select name="feature8" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature9">Altering medication regimen, dose and frequency (የመድሐኒት ጊዜን, መጠንን እና ድግግሞሽን ማዛባት):</label>
+              <select name="feature9" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature10">Discontinuing medications because they are not worth the money (ገንዘብ የማያስገኙ ስለሆኑ መድሃኒቶችን ማቋረጥ):</label>
+              <select name="feature10" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="feature11">Finding it difficult to buy medicines because they are expensive (መድሃኒቶች ውድ ስለሆኑ ለመግዛት አስቸጋሪ መሆን):</label>
+              <select name="feature11" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div style="margin-top: 20px;">
+              <button type="submit"><i class="fas fa-check"></i> Go </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+      {% endif %}
+    </form>
+  </div>
+  
+{% endblock %}
